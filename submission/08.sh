@@ -20,6 +20,5 @@ output=$(jq -n --arg addr "$recipient" '{"\($addr)": 0.2}')
 echo "output: $output"
 
 # Create raw transaction
-rawtxhex=$(bitcoin-cli -regtest createrawtransaction "$input" "$output")
-echo "rawtxhex: $rawtxhex"
+bitcoin-cli -regtest createrawtransaction "$input" "$output")
 
