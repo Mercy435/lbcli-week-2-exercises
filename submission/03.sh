@@ -6,8 +6,5 @@ ADDR=$(bitcoin-cli -regtest -rpcwallet=btrustwallet getnewaddress "" bech32)
 bitcoin-cli -regtest generatetoaddress 101 "$ADDR"
 
 # Return only the Address
-echo $ADDR
-
-
-
+echo "$ADDR"
 
