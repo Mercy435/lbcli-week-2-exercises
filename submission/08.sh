@@ -11,7 +11,8 @@ recipient="2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP"
 decoded=$(bitcoin-cli -regtest decoderawtransaction "$raw_tx")
 
 # extract input
-input=$(echo "$decoded" | jq --arg txid "$(echo "$decoded" | jq -r .txid)" '[.vout[] | {txid: $txid, vout: .n, sequence: 1}}]')
+input=$(echo "$decoded" | jq --arg txid "$(echo "$decoded" | jq -r .txid)" '[.vout[] | {txid: $txid, vout: .n, sequence: 1}]')
+
 
 echo "input: $input"
 
