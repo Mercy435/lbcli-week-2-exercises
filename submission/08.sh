@@ -13,13 +13,11 @@ decoded=$(bitcoin-cli -regtest decoderawtransaction "$raw_tx")
 # extract input
 input=$(echo "$decoded" | jq --arg txid "$(echo "$decoded" | jq -r .txid)" '[.vout[] | {txid: $txid, vout: .n, sequence: 1}]')
 
-
-echo "input: $input"
-
 # Construct the output (send 0.2 BTC = 20,000,000 sat)
 output=$(jq -n --arg addr "$recipient" '{"\($addr)": 0.2}')
-echo "output: $output"
 
 # Create raw transaction
 bitcoin-cli -regtest createrawtransaction "$input" "$output"
+
+
 
